@@ -14,19 +14,19 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Pravinnash Muralitharan # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: Cybersecurity Undergraduate | Blue Team & SOC # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+ Documenting my journey into SOC and blue team security — labs, writeups, and projects.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://pravinnash-a70m.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: pravinnash-A70M # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
@@ -40,7 +40,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
+    - https://github.com/pravinnash-A70M # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
