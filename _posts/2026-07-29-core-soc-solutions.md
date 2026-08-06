@@ -1,10 +1,10 @@
 ---
 title: "Core SOC Solutions: How EDR, SIEM, and SOAR Work Together"
-date: 2026-07-29 10:00:00 +0530
+date: 2026-08-06 10:00:00 +0530
 categories: [SOC Level 1, TryHackMe]
 tags: [soc, edr, siem, soar, splunk, elk, tryhackme]
 ---
-
+ 
 ## Why this module matters 
 
 Before this module, I knew EDR, SIEM, and SOAR as buzzwords from job postings. After going
