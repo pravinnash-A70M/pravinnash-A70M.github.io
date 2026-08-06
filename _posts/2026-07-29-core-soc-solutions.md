@@ -1,4 +1,3 @@
-
 ---
 title: "Core SOC Solutions: How EDR, SIEM, and SOAR Work Together"
 date: 2026-07-29 10:00:00 +0530
