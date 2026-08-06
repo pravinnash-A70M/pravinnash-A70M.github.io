@@ -21,7 +21,7 @@ Traditional antivirus mainly scans files on a single device, looking for known m
  
 ## 2. SIEM (Security Information and Event Management)
 
-[your explanation here]
+[your explanation here] cool checking
 
 ## 3. Splunk: The Basics
 
