@@ -13,11 +13,11 @@ workflow, and why an analyst needs all three working together rather than any on
 
 ## 1. EDR (Endpoint Detection and Response)
 
-[What is EDR and why it exists
+What is EDR and why it exists
  
 Endpoint Detection and Response (EDR) is a security tool used to protect all of an organization's endpoint devices laptops, servers, workstations regardless of whether those devices are inside the corporate network or remote. It goes well beyond what traditional antivirus offers.
 
-Traditional antivirus mainly scans files on a single device, looking for known malware signatures, and stops there it has no visibility beyond that one machine and no way for an analyst to act on what it finds. EDR is built for a different job: it continuously collects detailed activity data from every endpoint even ones outside the traditional network perimeter and feeds it into a central dashboard where a SOC analyst can actually investigate what's happening. Crucially, EDR doesn't just detect; it lets the analyst respond remotely isolating a device, killing a process, or containing a threat before it spreads, which a normal antivirus simply can't do.]
+Traditional antivirus mainly scans files on a single device, looking for known malware signatures, and stops there it has no visibility beyond that one machine and no way for an analyst to act on what it finds. EDR is built for a different job: it continuously collects detailed activity data from every endpoint even ones outside the traditional network perimeter and feeds it into a central dashboard where a SOC analyst can actually investigate what's happening. Crucially, EDR doesn't just detect; it lets the analyst respond remotely isolating a device, killing a process, or containing a threat before it spreads, which a normal antivirus simply can't do.
 
 ## 2. SIEM (Security Information and Event Management)
 
