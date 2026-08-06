@@ -5,7 +5,7 @@ categories: [SOC Level 1, TryHackMe]
 tags: [soc, edr, siem, soar, splunk, elk, tryhackme]
 ---
 
-## Why this module matters
+## Why this module matters 
 
 Before this module, I knew EDR, SIEM, and SOAR as buzzwords from job postings. After going
 through it hands-on, I can explain what each one actually does, where it sits in a SOC's
