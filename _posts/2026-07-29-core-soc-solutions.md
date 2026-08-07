@@ -13,7 +13,7 @@ workflow, and why an analyst needs all three working together rather than any on
 
 ## 1. EDR (Endpoint Detection and Response)
 
-What is EDR and why it exists
+What is EDR and why it exists 
  
 Endpoint Detection and Response (EDR) is a security tool used to protect all of an organization's endpoint devices laptops, servers, workstations regardless of whether those devices are inside the corporate network or remote. It goes well beyond what traditional antivirus offers.
 
