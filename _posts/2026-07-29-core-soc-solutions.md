@@ -24,12 +24,11 @@ Traditional antivirus mainly scans files on a single device, looking for known m
 ### How EDR collects data
 
 EDR tools use a very lightweight software agent installed on all end devices. This agent captures and logs all kinds of activity — this data is called telemetry. The collected data includes:
-
-    Process activity — every process that starts, what spawned it (parent-child relationship), and the command-line arguments used
-    File activity — files created, modified, or deleted, especially in sensitive locations
-    Registry changes (Windows) — especially persistence-related keys (e.g. programs set to auto-run at startup)
-    Network connections — what process is making outbound connections, to which IP/domain, on what port
-    Memory/API calls — some EDRs hook into system calls to catch code injection or in-memory-only malware that never touches disk
+    - Process activity — every process that starts, what spawned it (parent-child relationship), and the command-line arguments used
+    - File activity — files created, modified, or deleted, especially in sensitive locations
+    - Registry changes (Windows) — especially persistence-related keys (e.g. programs set to auto-run at startup)
+    - Network connections — what process is making outbound connections, to which IP/domain, on what port
+    - Memory/API calls — some EDRs hook into system calls to catch code injection or in-memory-only malware that never touches disk
 
 All of this telemetry is sent to the vendor's cloud service, which is where the EDR software is hosted. Analysts log in securely to the dashboard to triage the incoming logs and alerts.
 
@@ -53,14 +52,13 @@ The automatic response is handled by the agent installed on the end device itsel
 
 2. Process Termination & Process Tree Not every malicious activity needs full host isolation, and isolating some hosts can actually cause more business damage than the threat itself if they're running critical operations. In those cases, just terminating the malicious process is enough to contain it. The agent bypasses the standard Windows/Linux task manager and instead uses its kernel callback module to issue an un-bypassable process-termination call directly to the OS kernel, cleanly tearing down the process and its child processes.
 
-3. Forensic Artifact Gathering In some cases analysts need more information for deeper analysis or legal reasons, and collect artifacts like,
+3. Forensic Artifact Gathering In some cases analysts need more information for deeper analysis or legal reasons, and collect artifacts like:
+    - Memory dumps
+    - Event logs
+    - Specific folder contents
+    - Registry hives
 
-- Memory dumps
-- Event logs
-- Specific folder contents
-- Registry hives
-
-This can be done through the EDR console by sending commands to the agent, automatically via a SOAR playbook when a rule triggers, or by the analyst opening a remote shell to the device directly to collect custom files themselves.
+ This can be done through the EDR console by sending commands to the agent, automatically via a SOAR playbook when a rule triggers, or by  the analyst opening a remote shell to the device directly to collect custom files themselves.
 
 4. Cleanup and Quarantine Once a malicious file is found on an endpoint, it can be quarantined — put somewhere it can't cause harm — and later either recovered by the analyst for further inspection or wiped from the system entirely.
 
