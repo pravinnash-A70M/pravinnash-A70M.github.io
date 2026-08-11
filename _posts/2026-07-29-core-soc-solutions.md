@@ -39,11 +39,11 @@ The collected telemetry is used to detect threats using a few core techniques:
 
 - **IOC & Signature Matching**: computes file hashes as files are created or modified, and checks these hashes, along with connection IPs, domains, and URLs, against known threat intelligence blocklists. This is the same basic idea what antivirus uses.
 
-- **Behavioral & Heuristic Detection**: instead of looking at file attributes alone, this evaluates the chain of execution — tracking which process spawned which. A classic example is Microsoft Word spawning PowerShell, which then reaches out to an external IP. Individually, winword.exe and powershell.exe are both legitimate programs, so antivirus wouldn't flag either — but EDR tracks the parent-child relationship between them, and an office app spawning a shell that then makes a network connection is a known malicious pattern, so EDR flags the chain even though no single step looks malicious alone.
+- **Behavioral & Heuristic Detection**: instead of looking at file attributes alone, this goes through the chain of execution to track which process spawned which ones. A classic example is Microsoft Word spawning PowerShell, which then reaches out to an external IP. Individually, winword.exe and powershell.exe are both legitimate programs, so antivirus wouldn't flag either but EDR tracks the parent-child relationship between them, and an office app spawning a shell that then makes a network connection is a known malicious pattern, so EDR flags the chain even though no single step looks malicious alone.
 
-- **Machine Learning-based Detection**: EDR also uses ML models to flag unusual activity that doesn't match a known signature or behavior rule, mainly to catch zero-day threats — malware nobody has seen before, so no signature exists for it yet.
+- **Machine Learning-based Detection**: EDR also uses ML models to flag unusual activity that doesn't match a known signature or behavior rule, mainly to catch zero-day threats malware nobody has seen before, so no signature exists for it yet.
 
-(**Note**: I found sources listing anywhere from 3 to 6 "standard" detection techniques — some enterprise EDR platforms go much deeper, with things like cross-host correlation and memory-level exploit detection. I've kept this to the three I can explain simply at my current level, rather than listing everything I found.)
+(**Note**: I was able to find sources from internet listing 3 to 6 "standard" detection techniques used by EDR, some enterprise EDR  go much deeper, with things like cross-host correlation and memory-level exploit detection. I've kept this to main simple three so I can explain them simply at my current level, rather than listing everything I found.)
 
 #### How EDR responds to threats
 
