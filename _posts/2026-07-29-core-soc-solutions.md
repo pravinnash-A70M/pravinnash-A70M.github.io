@@ -21,9 +21,10 @@ Traditional antivirus mainly scans files on a single device, looking for known m
 
 ### How EDR works / how it detect threats
 
-### How EDR collects data
+#### How EDR collects data
 
 EDR tools use a very lightweight software agent installed on all end devices. This agent captures and logs all kinds of activity — this data is called telemetry. The collected data includes:
+
     - **Process activity:** Every process that starts, what spawned it (parent-child relationship), and the command-line arguments used.
     - **File activity:** Files created, modified, or deleted, especially in sensitive locations.
     - **Registry changes (Windows):** Especially persistence-related keys (e.g. programs set to auto-run at startup).
@@ -32,7 +33,7 @@ EDR tools use a very lightweight software agent installed on all end devices. Th
 
 All of this telemetry is sent to the vendor's cloud service, which is where the EDR software is hosted. Analysts log in securely to the dashboard to triage the incoming logs and alerts.
 
-### How EDR detects threats
+#### How EDR detects threats
 
 The collected telemetry is used to detect threats using a few core techniques:
 
@@ -42,7 +43,7 @@ Machine Learning-based Detection — EDR also uses ML models to flag unusual act
 
 (Note: I found sources listing anywhere from 3 to 6 "standard" detection techniques — some enterprise EDR platforms go much deeper, with things like cross-host correlation and memory-level exploit detection. I've kept this to the three I can explain and defend properly at my current level, rather than listing everything I found.)
 
-### How EDR responds to threats
+#### How EDR responds to threats
 
 After detecting a threat, EDR provides both automatic and manual ways to respond.
 
