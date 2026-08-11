@@ -28,7 +28,7 @@ EDR tools use a very lightweight software agent installed on all end devices. Th
 - **Process activity:** Every process that starts, what started it and (parent-child relationship), and the command-line arguments used.
 - **File activity:** Files created, modified, or deleted, mainly in sensitive locations.
 - **Registry changes (Windows):** Especially persistence-related keys (e.g. programs set to auto-run at startup using Run key).
-- **Network connections:** checking on which process is making an outbound connection whether a uncommon process like (e.g., `calc.exe`) making a connection, to which IP/domain, on what port.
+- **Network connections:** checking on which process is making an outbound connection whether a uncommon process like (e.g., ```calc.exe```) making a connection, to which IP/domain, on what port.
 - **Memory/API calls:** Some EDRs hook into system calls to catch code injection or in-memory-only malware that never touches disk.
 
 All of this telemetry is sent to the vendor's cloud service, that's is where the EDR software is hosted. Analysts log in securely to the dashboard to triage the incoming logs and alerts.
