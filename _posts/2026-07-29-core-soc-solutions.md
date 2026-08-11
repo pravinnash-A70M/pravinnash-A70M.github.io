@@ -24,11 +24,11 @@ Traditional antivirus mainly scans files on a single device, looking for known m
 ### How EDR collects data
 
 EDR tools use a very lightweight software agent installed on all end devices. This agent captures and logs all kinds of activity — this data is called telemetry. The collected data includes:
-    - Process activity — every process that starts, what spawned it (parent-child relationship), and the command-line arguments used
-    - File activity — files created, modified, or deleted, especially in sensitive locations
-    - Registry changes (Windows) — especially persistence-related keys (e.g. programs set to auto-run at startup)
-    - Network connections — what process is making outbound connections, to which IP/domain, on what port
-    - Memory/API calls — some EDRs hook into system calls to catch code injection or in-memory-only malware that never touches disk
+    - Process activity: every process that starts, what spawned it (parent-child relationship), and the command-line arguments used
+    - File activity: files created, modified, or deleted, especially in sensitive locations
+    - Registry changes: (Windows) — especially persistence-related keys (e.g. programs set to auto-run at startup)
+    - Network connections: what process is making outbound connections, to which IP/domain, on what port
+    - Memory/API calls: some EDRs hook into system calls to catch code injection or in-memory-only malware that never touches disk
 
 All of this telemetry is sent to the vendor's cloud service, which is where the EDR software is hosted. Analysts log in securely to the dashboard to triage the incoming logs and alerts.
 
