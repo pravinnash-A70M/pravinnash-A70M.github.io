@@ -24,7 +24,6 @@ Traditional antivirus mainly scans files on a single device, looking for known m
 #### How EDR collects data
 
 EDR tools use a very lightweight software agent installed on all end devices. This agent captures and logs all kinds of activity — this data is called telemetry. The collected data includes:
-
     - **Process activity:** Every process that starts, what spawned it (parent-child relationship), and the command-line arguments used.
     - **File activity:** Files created, modified, or deleted, especially in sensitive locations.
     - **Registry changes (Windows):** Especially persistence-related keys (e.g. programs set to auto-run at startup).
