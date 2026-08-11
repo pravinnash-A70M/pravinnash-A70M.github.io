@@ -58,7 +58,7 @@ The automatic response is handled by the agent installed on the end device itsel
     - Specific folder contents
     - Registry hives
 
- This can be done through the EDR console by sending commands to the agent, automatically via a SOAR playbook when a rule triggers, or by  the analyst opening a remote shell to the device directly to collect custom files themselves.
+      This can be done through the EDR console by sending commands to the agent, automatically via a SOAR playbook when a rule triggers,        or by  the analyst opening a remote shell to the device directly to collect custom files themselves.
 
 4. Cleanup and Quarantine Once a malicious file is found on an endpoint, it can be quarantined — put somewhere it can't cause harm — and later either recovered by the analyst for further inspection or wiped from the system entirely.
 
