@@ -37,33 +37,33 @@ All of this telemetry is sent to the vendor's cloud service, that's is where the
 
 The collected telemetry is used to detect threats using a few core techniques:
 
-- IOC & Signature Matching: computes file hashes as files are created or modified, and checks these hashes, along with connection IPs, domains, and URLs, against known threat intelligence blocklists. This is the same basic idea what antivirus uses.
+- **IOC & Signature Matching**: computes file hashes as files are created or modified, and checks these hashes, along with connection IPs, domains, and URLs, against known threat intelligence blocklists. This is the same basic idea what antivirus uses.
 
-- Behavioral & Heuristic Detection: instead of looking at file attributes alone, this evaluates the chain of execution — tracking which process spawned which. A classic example is Microsoft Word spawning PowerShell, which then reaches out to an external IP. Individually, winword.exe and powershell.exe are both legitimate programs, so antivirus wouldn't flag either — but EDR tracks the parent-child relationship between them, and an office app spawning a shell that then makes a network connection is a known malicious pattern, so EDR flags the chain even though no single step looks malicious alone.
+- **Behavioral & Heuristic Detection**: instead of looking at file attributes alone, this evaluates the chain of execution — tracking which process spawned which. A classic example is Microsoft Word spawning PowerShell, which then reaches out to an external IP. Individually, winword.exe and powershell.exe are both legitimate programs, so antivirus wouldn't flag either — but EDR tracks the parent-child relationship between them, and an office app spawning a shell that then makes a network connection is a known malicious pattern, so EDR flags the chain even though no single step looks malicious alone.
 
-- Machine Learning-based Detection: EDR also uses ML models to flag unusual activity that doesn't match a known signature or behavior rule, mainly to catch zero-day threats — malware nobody has seen before, so no signature exists for it yet.
+- **Machine Learning-based Detection**: EDR also uses ML models to flag unusual activity that doesn't match a known signature or behavior rule, mainly to catch zero-day threats — malware nobody has seen before, so no signature exists for it yet.
 
-(Note: I found sources listing anywhere from 3 to 6 "standard" detection techniques — some enterprise EDR platforms go much deeper, with things like cross-host correlation and memory-level exploit detection. I've kept this to the three I can explain and defend properly at my current level, rather than listing everything I found.)
+(**Note**: I found sources listing anywhere from 3 to 6 "standard" detection techniques — some enterprise EDR platforms go much deeper, with things like cross-host correlation and memory-level exploit detection. I've kept this to the three I can explain simply at my current level, rather than listing everything I found.)
 
 #### How EDR responds to threats
 
-After detecting a threat, EDR provides both automatic and manual ways to respond.
+After detecting a threat, EDR provides both automatic and manual ways to respond to them.
 
-The automatic response is handled by the agent installed on the end device itself. These agents contain privileged system components, a lightweight trained ML model to catch zero-day threats locally, and a small local database with cached malicious hash lists and response playbooks — this is how the agent can triage some threats automatically on its own.
+The automatic response is handled by the agent installed on the end devices. These agents contain privileged system components, a lightweight trained ML model to catch zero-day threats locally, and a small local database with cached malicious hash lists and response playbooks, this is how the agent can triage some threats automatically on its own. When it comes to manual triage by analysts they perform these:
 
-1. Isolate Host During malicious activity on an endpoint, the endpoint can be isolated from the network through EDR. This is very effective for containing an attack — most attacks start on a single endpoint and try to move laterally to compromise the rest of the network, so isolating the infected endpoint in time can stop that from happening.
+1. Isolate Host - During malicious activity on an endpoint, the endpoint can be isolated from the network completely through EDR. This is very effective for containing an attack. Most attacks start on a single endpoint and try to move laterally to compromise the rest of the network this is known as **pivoting**, by isolating the infected endpoint we can stop from happening.
 
-2. Process Termination & Process Tree Not every malicious activity needs full host isolation, and isolating some hosts can actually cause more business damage than the threat itself if they're running critical operations. In those cases, just terminating the malicious process is enough to contain it. The agent bypasses the standard Windows/Linux task manager and instead uses its kernel callback module to issue an un-bypassable process-termination call directly to the OS kernel, cleanly tearing down the process and its child processes.
-
-3. Forensic Artifact Gathering In some cases analysts need more information for deeper analysis or legal reasons, and collect artifacts like:
+2. Process Termination & Process Tree -  Not every malicious activity needs full host isolation, and isolating some hosts can actually cause more business damage than the threat itself if they're running critical operations. In those cases, just terminating the malicious process is enough to contain it. The agent bypasses the standard Windows/Linux task manager and instead uses its kernel callback module to issue an unbypassable process-termination directly to the OS kernel, this helps cleanly stopping a process without the OS interfering.
+  
+3. Forensic Artifact Gathering -  In some cases analysts need more information for deeper analysis or legal reasons, so they collect artifacts like:
     - Memory dumps
     - Event logs
     - Specific folder contents
     - Registry hives
 
-   This can be done through the EDR console by sending commands to the agent, automatically via a SOAR playbook when a rule triggers,        or by  the analyst opening a remote shell to the device directly to collect custom files themselves.
+   This can be done through the EDR console by sending commands to the agent, or even by automatically done using a **SOAR** playbook  when a rule triggers, or even the analyst can open a remote shell to the device directly to collect custom files themselves.
 
-4. Cleanup and Quarantine Once a malicious file is found on an endpoint, it can be quarantined — put somewhere it can't cause harm — and later either recovered by the analyst for further inspection or wiped from the system entirely.
+4. Cleanup and Quarantine - Once a malicious file is found on an endpoint, it can be quarantined and put somewhere it can't cause harm and later it can be either recovered by the analyst for further inspection or wiped away from the system entirely.
 
  
 ## 2. SIEM (Security Information and Event Management)
