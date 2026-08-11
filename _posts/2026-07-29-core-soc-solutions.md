@@ -23,23 +23,25 @@ Traditional antivirus mainly scans files on a single device, looking for known m
 
 #### How EDR collects data
 
-EDR tools use a very lightweight software agent installed on all end devices. This agent captures and logs all kinds of activity — this data is called telemetry. The collected data includes:
+EDR tools use a very lightweight software agent installed on all end devices. This agent captures and logs all kinds of activity and logs, this data is called **telemetry**. The collected data includes:
 
-- **Process activity:** Every process that starts, what spawned it (parent-child relationship), and the command-line arguments used.
-- **File activity:** Files created, modified, or deleted, especially in sensitive locations.
-- **Registry changes (Windows):** Especially persistence-related keys (e.g. programs set to auto-run at startup).
-- **Network connections:** What process is making outbound connections, to which IP/domain, on what port.
+- **Process activity:** Every process that starts, what started it and (parent-child relationship), and the command-line arguments used.
+- **File activity:** Files created, modified, or deleted, mainly in sensitive locations.
+- **Registry changes (Windows):** Especially persistence-related keys (e.g. programs set to auto-run at startup using Run key).
+- **Network connections:** checking on which process is making an outbound connection whether a uncommon process like (e.g., `calc.exe`) making a connection, to which IP/domain, on what port.
 - **Memory/API calls:** Some EDRs hook into system calls to catch code injection or in-memory-only malware that never touches disk.
 
-All of this telemetry is sent to the vendor's cloud service, which is where the EDR software is hosted. Analysts log in securely to the dashboard to triage the incoming logs and alerts.
+All of this telemetry is sent to the vendor's cloud service, that's is where the EDR software is hosted. Analysts log in securely to the dashboard to triage the incoming logs and alerts.
 
 #### How EDR detects threats
 
 The collected telemetry is used to detect threats using a few core techniques:
 
-IOC & Signature Matching — computes file hashes as files are created or modified, and checks these hashes, along with connection IPs, domains, and URLs, against known threat intelligence blocklists. This is the same basic idea antivirus uses.
-Behavioral & Heuristic Detection — instead of looking at file attributes alone, this evaluates the chain of execution — tracking which process spawned which. A classic example is Microsoft Word spawning PowerShell, which then reaches out to an external IP. Individually, winword.exe and powershell.exe are both legitimate programs, so antivirus wouldn't flag either — but EDR tracks the parent-child relationship between them, and an office app spawning a shell that then makes a network connection is a known malicious pattern, so EDR flags the chain even though no single step looks malicious alone.
-Machine Learning-based Detection — EDR also uses ML models to flag unusual activity that doesn't match a known signature or behavior rule, mainly to catch zero-day threats — malware nobody has seen before, so no signature exists for it yet.
+- IOC & Signature Matching: computes file hashes as files are created or modified, and checks these hashes, along with connection IPs, domains, and URLs, against known threat intelligence blocklists. This is the same basic idea what antivirus uses.
+
+- Behavioral & Heuristic Detection: instead of looking at file attributes alone, this evaluates the chain of execution — tracking which process spawned which. A classic example is Microsoft Word spawning PowerShell, which then reaches out to an external IP. Individually, winword.exe and powershell.exe are both legitimate programs, so antivirus wouldn't flag either — but EDR tracks the parent-child relationship between them, and an office app spawning a shell that then makes a network connection is a known malicious pattern, so EDR flags the chain even though no single step looks malicious alone.
+
+- Machine Learning-based Detection: EDR also uses ML models to flag unusual activity that doesn't match a known signature or behavior rule, mainly to catch zero-day threats — malware nobody has seen before, so no signature exists for it yet.
 
 (Note: I found sources listing anywhere from 3 to 6 "standard" detection techniques — some enterprise EDR platforms go much deeper, with things like cross-host correlation and memory-level exploit detection. I've kept this to the three I can explain and defend properly at my current level, rather than listing everything I found.)
 
