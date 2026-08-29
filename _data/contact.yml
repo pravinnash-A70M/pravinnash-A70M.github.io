@@ -3,10 +3,10 @@
 - type: github
   icon: "fab fa-github"
 
- - type: twitter
+- type: twitter
   icon: "fa-brands fa-x-twitter"
 
- - type: email
+- type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
@@ -19,7 +19,7 @@
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
 #
- - type: linkedin
+- type: linkedin
    icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
    url:  'www.linkedin.com/in/pravinnash-muralitharan'                  # Fill with your Linkedin homepage
 #
