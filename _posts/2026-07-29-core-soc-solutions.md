@@ -7,9 +7,9 @@ tags: [soc, edr, siem, soar, splunk, elk, tryhackme]
  
 ## Why this module matters 
 
-Before this module, I knew EDR, SIEM, and SOAR as buzzwords from job postings. After going
-through it hands-on, I can explain what each one actually does, where it sits in a SOC's
-workflow, and why an analyst needs all three working together rather than any one alone.
+Before this module, I knew EDR, SIEM, and SOAR as seperate tools. After going
+through them on Tryhackme, I can explain what each one actually does, where it sits in a SOC's
+workflow, and why an analyst needs all three working together rather than only one alone.
 
 ## 1. EDR (Endpoint Detection and Response)
 
