@@ -38,8 +38,11 @@ The image contains two NTFS partitions:
 - **D:** starts at sector 206848 and ends at 41940991. Windows is installed here.
 
 ![Partition layout in Autopsy](/assets/img/posts/forensics-data-leak/image2.png)
+
 ![Partition table from mmls](/assets/img/posts/forensics-data-leak/image3.png)
+
 ![File system information, first partition](/assets/img/posts/forensics-data-leak/image4.png)
+
 ![File system information, second partition](/assets/img/posts/forensics-data-leak/image5.png)
 
 ## 3. Mount it read-only
@@ -64,6 +67,7 @@ To prove nothing changed afterwards, I can hash the image again and compare it w
 Looking at the raw bytes at the start of the OS partition, I found the boot sector and the two-byte end marker `55 AA`. The boot code also contains the standard error messages ("BOOTMGR is missing", "Press Ctrl+Alt+Del to restart") that the machine shows if booting fails.
 
 ![Start of the OS partition in a hex view](/assets/img/posts/forensics-data-leak/image8.png)
+
 ![The 55 AA end marker and boot error text](/assets/img/posts/forensics-data-leak/image9.png)
 
 ## 5. Profile the system from the registry
@@ -99,9 +103,13 @@ regripper -r SOFTWARE.raw -p winver
 The SAM hive (`samparse` plugin) showed four accounts:
 
 ![samparse output, first account](/assets/img/posts/forensics-data-leak/image14.png)
+
 ![admin11 account](/assets/img/posts/forensics-data-leak/image15.png)
+
 ![informant account](/assets/img/posts/forensics-data-leak/image16.png)
+
 ![temporary account](/assets/img/posts/forensics-data-leak/image17.png)
+
 ![ITechTeam account](/assets/img/posts/forensics-data-leak/image18.png)
 
 I then matched the SIDs against the SOFTWARE hive's ProfileList to confirm which accounts have profile folders.
@@ -134,7 +142,9 @@ The `uninstall` plugin reads the installed-programs list from the SOFTWARE hive.
 - Eraser 6.2.0.2962 (a secure file-wiping tool), installed 2015-03-25 14:57:31Z
 
 ![Default components dated 2009](/assets/img/posts/forensics-data-leak/image22.png)
+
 ![Programs added in March 2015, including Google Drive](/assets/img/posts/forensics-data-leak/image23.png)
+
 ![Eraser install time](/assets/img/posts/forensics-data-leak/image24.png)
 
 ## 8. Evidence of program execution: UserAssist
@@ -160,6 +170,7 @@ The order stands out. Eraser and CCleaner ran first, then the Google Drive sync 
 UserAssist also showed Internet Explorer (through the Explorer taskbar link) and Chrome in use.
 
 ![Explorer run count](/assets/img/posts/forensics-data-leak/image26.png)
+
 ![Chrome run count](/assets/img/posts/forensics-data-leak/image27.png)
 
 | Browser | Artifact | Path |
