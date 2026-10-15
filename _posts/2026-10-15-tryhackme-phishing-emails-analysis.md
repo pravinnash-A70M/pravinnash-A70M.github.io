@@ -3,7 +3,7 @@ title: "TryHackMe Phishing Module: How Email Works, How Fakes Get Caught, and Ho
 date: 2026-10-15 17:00:00 +0530
 categories: [TryHackMe, Phishing]
 tags: [tryhackme, phishing, email-analysis, smtp, spf, dkim, dmarc, phishtool, virustotal, urlscan, soc]
-description: "My full notes from the TryHackMe phishing module, in plain English: how email travels, what SPF, DKIM and DMARC actually do, the tools analysts use, and a walkthrough of a fake Netflix email."
+description: "My full notes from the TryHackMe phishing module: how email travels, what SPF, DKIM and DMARC actually do, the tools analysts use, and a walkthrough of a fake Netflix email."
 ---
 
 I finished the phishing analysis module on TryHackMe, and I wanted to write it up the way I'd explain it to a friend. Phishing is one of the first things a SOC analyst deals with every day, so I want to really understand it, not just memorise terms.
